@@ -10,6 +10,7 @@ const connection_url =
   "mongodb+srv://admin:mixedfruit@cluster0.uvuef.mongodb.net/tinderDB?retryWrites=true&w=majority";
 
 // midwares
+app.use(express.json());
 
 // db conigs
 mongoose.connect(connection_url, {

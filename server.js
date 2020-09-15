@@ -1,6 +1,7 @@
 // imports
 import express from "express";
 import mongoose from "mongoose";
+import Cards from "./dbCards";
 
 // config
 const app = express();
@@ -20,6 +21,16 @@ mongoose.connect(connection_url, {
 // routes
 app.get("/", (req, res) => {
   res.status(200).send("Hello World");
+});
+app.post("/tinder/cards", (req, res) => {
+  const dbCard = req.body;
+  Cards.create(dbCard, (err, data) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(201).send(data);
+    }
+  });
 });
 
 // listen

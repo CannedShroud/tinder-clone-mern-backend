@@ -1,7 +1,7 @@
 // imports
 import express from "express";
 import mongoose from "mongoose";
-import Cards from "./dbCards";
+import Cards from "./dbCards.js";
 
 // config
 const app = express();
@@ -33,14 +33,15 @@ app.post("/tinder/cards", (req, res) => {
     }
   });
 
-app.get("/tinder/cards", (req, res)=>{
+  app.get("/tinder/cards", (req, res) => {
     Cards.find((err, data) => {
-        if (err) {
-          res.status(500).send(err);
-        } else {
-          res.status(200).send(data);
-        }
-})
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).send(data);
+      }
+    });
+  });
 });
 
 // listen

@@ -2,6 +2,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import Cards from "./dbCards.js";
+import cors from "cors";
 
 // config
 const app = express();
@@ -11,6 +12,7 @@ const connection_url =
 
 // midwares
 app.use(express.json());
+app.use(cors());
 
 // db conigs
 mongoose.connect(connection_url, {
